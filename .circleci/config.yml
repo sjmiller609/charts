@@ -9,10 +9,13 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Helm lint
+          command: ./bin/lint
+      - run:
           name: Helm package
           command: ./bin/build
       - run:
-          name: Helm package
+          name: Helm publish
           command: ./bin/publish
 workflows:
   version: 2.1

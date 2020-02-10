@@ -1,0 +1,5 @@
+#!/bin/sh
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+helm dep update ./charts/*
+helm lint charts/*
+helm template ./charts/*

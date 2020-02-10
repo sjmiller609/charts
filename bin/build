@@ -1,8 +1,6 @@
 #!/bin/sh
 set -e
-helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 mkdir artifacts || true
-helm dep update ./charts/*
 cd ./artifacts
 helm package ../charts/*
 rm index.yaml.previous || true
