@@ -1,6 +1,6 @@
 apiVersion: v2
 name: kea-dhcp
-version: "0.0.0"
+version: "0.0.1"
 description: Kea DHCP server chart
 dependencies:
 - name: postgresql
