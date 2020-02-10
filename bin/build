@@ -1,8 +1,11 @@
-#!/bin/bash
+#!/bin/sh
 set -e
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-mkdir -p $DIR/../artifacts
-helm3 dep update $DIR/../charts/*
-cd $DIR/../artifacts
-helm3 package $DIR/../charts/*
-helm3 repo index . --url http://helm.steven-miller.me
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+mkdir artifacts || true
+helm dep update ./charts/*
+cd ./artifacts
+helm package ../charts/*
+rm index.yaml.previous || true
+wget -O index.yaml.previous http://helm.steven-miller.me/index.yaml
+helm repo index . --url http://helm.steven-miller.me --merge index.yaml.previous
+rm index.yaml.previous
