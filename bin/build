@@ -1,0 +1,8 @@
+#!/bin/bash
+set -e
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+mkdir -p $DIR/../artifacts
+helm3 dep update $DIR/../charts/*
+cd $DIR/../artifacts
+helm3 package $DIR/../charts/*
+helm3 repo index . --url http://helm.steven-miller.me.s3-website-us-east-1.amazonaws.com/

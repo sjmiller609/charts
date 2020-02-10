@@ -1,0 +1,3 @@
+#!/bin/bash
+aws s3 cp artifacts/ s3://helm.steven-miller.me \
+  --recursive --acl public-read --include *.tgz --include *.yaml
