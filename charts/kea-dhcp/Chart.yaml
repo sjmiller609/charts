@@ -1,0 +1,8 @@
+apiVersion: v2
+name: kea-dhcp
+version: "0.0.0"
+description: Kea DHCP server chart
+dependencies:
+- name: postgresql
+  version: 6.3.12
+  repository: "@stable"
